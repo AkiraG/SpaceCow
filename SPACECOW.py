@@ -1,10 +1,10 @@
 '''
 
 Feito para GAME JAM FATEC CARAPICUIBA - CARACAS GEEK FEST
-Programmers: George 'Shisho' Dourado , Gabriel 'Sensei' Faggione , Moura 'Senshi' Jesus
+Programmers: George Dourado , Gabriel Faggione , Moura Jesus
 Arte Designer: Matheus 'CJ' Freitas, Carlos 'Eduardo' Augusto
-Sound Designer: Flavio 'Brinde pras gordinhas, pras magrinhas e pras boqueteiras' Alves
-Game Designer: Flavio 'Sim ele denovo' Alves
+Sound Designer: Flavio Alves
+Game Designer: Flavio Alves
 
 '''
 
@@ -16,18 +16,19 @@ from CLASSES import Farmer,Map
 pygame.init()
 sounds=pygame.mixer
 sounds.init()
-myfont=pygame.font.SysFont("monospace",35)
+myfont=pygame.font.SysFont("monospace", 35)
+pygame.display.set_mode((800, 600))
 pygame.display.set_caption('SPACECOW')
 
 #Variables
 endgame=False
-white=(255,255,255)
-black=(0,0,0)
+white=(255, 255, 255)
+black=(0, 0, 0)
 
 
 #InstantiateClasses(TESTE)
 mapa = Map(sounds)
-farmer=Farmer('images/caipira.png',sounds)
+farmer=Farmer('images/caipira.png', sounds)
 mapa.draw_sprites.add(farmer)
 mapa.main_menu()
 mapa.new_level()
@@ -62,7 +63,7 @@ while endgame==False:
                         farmer.push(vaca)
                 pass
             if event.key==pygame.K_SPACE:
-                for x in xrange(mapa.num_ship):
+                for x in range(mapa.num_ship):
                     mapa.obj_ship_list[x].search_cow(mapa.obj_cow_list)
         if event.type==pygame.KEYUP:
             if event.key==pygame.K_LEFT:
@@ -83,7 +84,7 @@ while endgame==False:
 
     #CallUpdateFunctionsofSprites(TESTE)
     mapa.update()
-    for x in xrange(mapa.num_ship):
+    for x in range(mapa.num_ship):
         cow_collide=pygame.sprite.spritecollide(mapa.obj_ship_list[x-1],mapa.cow_list,False)
         for vaca in cow_collide:
             if mapa.obj_ship_list[x-1].status=='Abductin':
